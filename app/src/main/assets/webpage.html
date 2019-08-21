@@ -1,0 +1,72 @@
+﻿<body>
+
+
+
+    <canvas id="canvas" width="600" height="600">
+        Your browser doesn't appear to support the HTML5 <code>&lt;canvas&gt;</code> element.
+    </canvas>
+
+    <input type="button" style="position: absolute; right: 30px; top:35px" value="Нарисовать" id="btnTest1"
+         /> 
+         <!-- onclick="main()" -->
+
+    <div id="uiContainer">
+        <div id="ui" style="position: absolute; right: 30px; top:65px">
+            <div id="x"></div>
+            <div id="y"></div>
+            <div id="z"></div>
+            <div id="angleX"></div>
+            <div id="angleY"></div>
+            <div id="angleZ"></div>
+            <div id="scaleX"></div>
+            <div id="scaleY"></div>
+            <div id="scaleZ"></div>
+        </div>
+    </div>
+
+
+    <input type="file" style="position: absolute; right: 100px; top:5px" id="file">
+    <button  id="bt1" style="position: absolute; right: 30px; top:5px"> Ввод файла </button>
+    <!-- onclick="readFile()" -->
+    <br />
+    <div id="out"> </div>
+    <br />
+
+    <script id="3d-vertex-shader" type="x-shader/x-vertex">
+        attribute vec4 a_position;
+        attribute vec3 a_normal;
+
+        uniform mat4 u_worldViewProjection;
+        uniform mat4 u_worldInverseTranspose;
+
+        varying vec3 v_normal;
+
+        void main() {
+        gl_Position = u_worldViewProjection * a_position;
+        v_normal = mat3(u_worldInverseTranspose) * a_normal;
+        }   
+    </script>
+
+    <script id="3d-fragment-shader" type="x-shader/x-fragment">
+        precision mediump float;
+
+        varying vec3 v_normal;
+
+        uniform vec3 u_reverseLightDirection;
+        uniform vec4 u_color;
+
+        void main() {
+        vec3 normal = normalize(v_normal);
+        float light = dot(normal, u_reverseLightDirection);
+        gl_FragColor = u_color;
+        gl_FragColor.rgb *= light;
+        }
+    </script>
+
+    <script type="text/javascript" src="m4.js"></script>
+    <script type="text/javascript" src="webgl-lessons-ui.js"></script>
+    <script type="text/javascript" src="webgl-utils.js"></script>
+    <script type="text/javascript" src="code.js"></script>
+
+    
+</body>

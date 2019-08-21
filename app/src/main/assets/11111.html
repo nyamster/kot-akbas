@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Test</title>
+    <script type="text/javascript" src = "T02.js"></script>
+    <link rel="stylesheet" href="hello.css">
+  </head>
+  <input type="file" id="file">
+  <button onclick="readV()" id="bt1" > ReadV </button>
+  <button onclick="readT()" id="bt2" > ReadT </button>
+  <input type="range" style = "position: absolute; right: 200px; top: 40px" min="0" max="50" id="line" 
+    oninput="testMy()" value="0">
+  <div id="my" style = "position: absolute; right: 200px; top: 50px">0</div>
+  <input type="range" style = "position: absolute; right: 400px; top: 40px" min="0" max="50" id="line1" 
+    oninput="testMy1()" value="0">
+  <div id="my1" style = "position: absolute; right: 400px; top: 50px">0</div>
+  <input type="range" style = "position: absolute; right: 600px; top: 40px" min="0" max="50" id="line2" 
+    oninput="testMy2()" value="0">
+  <div id="my2" style = "position: absolute; right: 600px; top: 50px">0</div>
+  <input type="range" style = "position: absolute; right: 800px; top: 40px" min="0" max="50" id="line3" 
+  oninput="testMy3()" value="0">
+  <div id="my3" style = "position: absolute; right: 800px; top: 50px">0</div>
+  <br /> 
+  <div id="out">undefined</div>
+  <br />  
+  <body>
+    <canvas id = "canvas" width="600" height="600"></canvas>
+    <input type="button" style="position: absolute; left: 10px" value="Треугольник" id="btnTest1" onclick="btnTest1_Click()"/> 
+    <input type="button" style="position: absolute; right: 10px" value="Очистить" id="btnTest2" onclick="btnTest2_Click()"/> 
+ </body>
+</html>
